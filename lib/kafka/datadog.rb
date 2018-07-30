@@ -7,7 +7,7 @@ rescue LoadError
   raise
 end
 
-require "active_support/subscriber"
+require "kafka/subscriber"
 
 module Kafka
 
@@ -83,7 +83,7 @@ module Kafka
       end
     end
 
-    class StatsdSubscriber < ActiveSupport::Subscriber
+    class StatsdSubscriber < Kafka::Subscriber
       private
 
       %w[increment histogram count timing gauge].each do |type|

@@ -7,7 +7,7 @@ rescue LoadError
   raise
 end
 
-require "active_support/subscriber"
+require "kafka/subscriber"
 
 module Kafka
   # Reports operational metrics to a Statsd agent.
@@ -48,7 +48,7 @@ module Kafka
       statsd.namespace = namespace
     end
 
-    class StatsdSubscriber < ActiveSupport::Subscriber
+    class StatsdSubscriber < Kafka::Subscriber
       private
 
       %w[increment count timing gauge].each do |type|
